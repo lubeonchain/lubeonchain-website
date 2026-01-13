@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lube Lore | lubeonchain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Reuse main styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://kristopolous.github.io/BOOTSTRA.386/dist/css/bootstrap386.min.css" />
+
+  <!-- Lore-only extra spice -->
+  <style>
+    .lore-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 4rem;
+    }
+
+    .lore-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding: 0 5vw;
+    }
+
+    .glitch-title {
+      position: relative;
+      font-size: clamp(2.3rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .glitch-title span {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .glitch-title span:nth-child(1) {
+      transform: translate(-2px, -1px);
+      opacity: 0.7;
+      text-shadow: -2px 0 4px #9bffcd;
+    }
+
+    .glitch-title span:nth-child(2) {
+      transform: translate(2px, 1px);
+      opacity: 0.7;
+      text-shadow: 2px 0 4px #ff7df5;
+    }
+
+    .lore-subtitle {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #c7c7c7;
+      max-width: 30rem;
+      margin-inline: auto;
+    }
+
+    .lore-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.4rem;
+      padding: 0 5vw 3rem;
+    }
+
+    .lore-block {
+      background: radial-gradient(circle at top left, #191927, #05050a);
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 1.5rem 1.4rem 1.4rem;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9);
+      font-size: 0.9rem;
+      color: #e4e4e4;
+    }
+
+    .lore-block h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #b4ffda;
+      margin-bottom: 0.8rem;
+    }
+
+    .lore-block p {
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .lore-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lore-label {
+      font-family: "Menlo", "SF Mono", ui-monospace, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8b8b8b;
+      margin-bottom: 0.5rem;
+    }
+
+    .lore-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .lore-list li {
+      margin-bottom: 0.45rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .lore-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      top: 0.02rem;
+      color: #9bffcd;
+    }
+
+    .lore-code {
+      background: rgba(5, 5, 12, 0.95);
+      border-radius: 0.8rem;
+      border: 1px solid rgba(155, 255, 205, 0.35);
+      padding: 0.85rem 0.9rem;
+      font-family: "Menlo", "SF Mono", ui-monospace, monospace;
+      font-size: 0.78rem;
+      color: #c8ffe1;
+      margin-top: 0.6rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    .redacted-line {
+      height: 0.8rem;
+      background: #1a1a1a;
+      margin-bottom: 0.5rem;
+      border-radius: 2px;
+      width: 100%;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .cia-redacted {
+      position: relative;
+    }
+
+    .cia-redacted::before {
+      content: "REDACTED";
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      color: #ff3333;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      opacity: 0.6;
+      transform: rotate(-15deg);
+    }
+
+    .lore-footer-nav {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 2.4rem;
+    }
+
+    .lore-footer-nav .btn {
+      font-size: 0.85rem;
+      padding-inline: 1.4rem;
+    }
+
+    .lore-emphasis {
+      color: #ffb7ff;
+      font-weight: 500;
+    }
+
+    .lore-highlight {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(8, 8, 16, 0.9);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 850px) {
+      .lore-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .lore-block {
+        padding-inline: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-noise"></div>
+
+  <main class="lore-shell">
+
+    <!-- Header / Title -->
+    <header class="lore-header">
+      <div class="glitch-title">
+        LUBE LORE
+        <span> LUBE LORE </span>
+        <span> LUBE LORE </span>
+      </div>
+    </header>
+
+    <!-- Two-column fried lore -->
+    <section class="lore-grid">
+      <!-- Left: narrative / chapters -->
+      <article class="lore-block">
+        <h3>Chapter 0: Pre Seed</h3>
+        <p class="lore-label">ARCHIVE // ORIGIN STORY</p>
+
+        <p>
+          Before he was <span class="lore-emphasis">Lube</span>, he was just a guy  
+          with a finance bro salary and a dream for crypto..
+        </p>
+
+        <p>
+          One night, after the 7th consecutive failed rotation into a
+          micro-cap with a Google Drive roadmap and zero volume, he stared
+          into a 15-minute chart so long that the candles stared back.
+        </p>
+
+        <p>
+          The chart spoke: "Your edge isn't the trade. Your edge is the
+          character behind the trades." At that moment, the on-chain entity
+          known as <span class="lore-emphasis">Lube</span> spawned.
+          Fully lubricated. Terminally online.
+        </p>
+
+        <h3 style="margin-top: 1.4rem;">Chapter 1: Where Do We Start?</h3>
+        <p class="lore-label">ARCHIVE // ORIGIN STORY</p>
+        <p>
+          You must read these two texts. In order. With a completely open mind.
+        </p>
+        <p>
+          <strong>Text 1:</strong> <a href="https://www.amazon.com/21st-Century-Monetary-Policy-Inflation/dp/1324020466" target="_blank">21st Century Monetary Policy: The Federal Reserve from the Great Inflation to COVID-19</a>
+        </p>
+        <p>
+          <strong>Text 2:</strong> <a href="https://www.amazon.com/Creature-Jekyll-Island-Federal-Reserve/dp/091298645X" target="_blank">The Creature from Jekyll Island: A Second Look at the Federal Reserve</a>
+        </p>
+        <p>
+          I highly recommend understanding the perspectives. So now fast forward to present day, what do they mean to you? But still, how do we get here?? After reading the texts you will know 99% more about central banking and currencies than most business school students.
+        </p>
+        <p>
+          The next concept to why we are here is <span class="lore-emphasis">velocity of money</span>.
+        </p>
+        <p>
+          <strong>Text 3:</strong> <a href="https://www.theinvestorspodcast.com/episodes/financial-wisdom-w-cullen-roche/" target="_blank">TIP523</a>
+        </p>
+      </article>
+
+      <!-- Right: CIA Redacted White Paper -->
+      <article class="lore-block cia-redacted">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <p class="lore-label" style="display: inline-block;">CLASSIFIED // TOP SECRET</p>
+        </div>
+        
+        <h3 style="text-align: center; margin-bottom: 1.2rem;">White Paper (lubeonchain.sol)</h3>
+        
+        <div class="redacted-line"></div>
+        <div class="redacted-line"></div>
+        <div class="redacted-line" style="width: 85%;"></div>
+        
+        <div style="margin-top: 1.2rem; margin-bottom: 1rem;">
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line" style="width: 60%;"></div>
+        </div>
+        
+        <div style="margin-top: 1.2rem; margin-bottom: 1rem;">
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line" style="width: 75%;"></div>
+        </div>
+        
+        <div style="margin-top: 1.2rem; margin-bottom: 1rem;">
+          <div class="redacted-line"></div>
+          <div class="redacted-line"></div>
+          <div class="redacted-line" style="width: 90%;"></div>
+        </div>
+        
+        <div style="margin-top: 1.2rem; text-align: center;">
+          <p class="lore-label">DOCUMENT ID: LUBE-CONFIDENTIAL-001<br/>DISTRIBUTION: NEED-TO-KNOW ONLY</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final block: initiation -->
+    <section class="panel">
+      <div class="panel-inner">
+        <h2>Initiation Protocol</h2>
+        <p class="lore-label">STATUS // ALWAYS LIVE</p>
+        <p>
+          You are not required to understand any of this. You are only
+          required to witness it in real time and pretend you were early.
+        </p>
+        <p>
+          By reading this page, you have unintentionally subscribed to
+          the ongoing experiment known as
+          <span class="lore-emphasis">Lube</span>: a fully weaponized
+          Crypto Twitter persona designed to rotate attention, narrative,
+          and occasionally market caps.
+        </p>
+        <p>
+          Your only task is simple: observe, lurk, or participate. But
+          whatever you do, remember:
+        </p>
+        <p class="lore-code">
+          if (timeline == unhinged && feed == pure chaos) {<br />
+          &nbsp;&nbsp;// you are exactly where you're supposed to be<br />
+          }
+        </p>
+      </div>
+    </section>
+
+    <!-- Back button -->
+    <div class="lore-footer-nav">
+      <a href="index.html" class="btn btn-ghost">
+        ◀ Return to main terminal
+      </a>
+    </div>
+
+  </main>
+
+  <script src="https://kristopolous.github.io/BOOTSTRA.386/dist/js/bootstrap386.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

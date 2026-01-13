@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lube | lubeonchain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Lube / @lubeonchain – unhinged, minimal, full-degen lube-core chaos on Crypto Twitter."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-container">
+      <h2 class="loading-text">Loading...</h2>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="loading-percentage" id="loadingPercentage">0%</p>
+    </div>
+  </div>
+
+  <div class="bg-noise"></div>
+
+  <main class="shell" id="mainContent" style="display: none;">
+    <!-- Top Ticker -->
+    <div class="marquee ticker-top">
+      <div class="marquee-track" id="topTicker">
+        <span>Loading wallet data...</span>
+        <span>Loading wallet data...</span>
+      </div>
+    </div>
+
+    <!-- Top bar -->
+    <header class="top-bar">
+      <div class="logo-chip">
+        <span class="logo-dot"></span>
+        <span class="logo-text">Lube</span>
+      </div>
+      <nav class="top-links">
+        <!-- Add more when ready -->
+        <!-- <a href="https://t.me/..." target="_blank" rel="noopener noreferrer">TG</a> -->
+        <!-- <a href="https://..." target="_blank" rel="noopener noreferrer">Chart</a> -->
+      </nav>
+    </header>
+
+    <!-- HERO SCREEN -->
+    <section class="hero-screen">
+      <div class="pfp-wrap">
+        <div class="pfp-glow"></div>
+        <img
+          src="lube-pfp.jpg"
+          alt="Lube NFT profile picture"
+          class="pfp-img"
+        />
+      </div>
+
+      <div class="hero-text">
+        <h1>lubeonchain by developer dru</h1>
+        <p class="handle">@lubeonchain</p>
+      </div>
+
+      <div class="hero-buttons">
+        <a
+          href="https://x.com/lubeonchain"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Follow on X
+        </a>
+
+        <a
+          href="https://www.sns.id/domain/lubeonchain"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SNS
+        </a>
+
+        <a
+          href="https://substack.com/@lubeonchain"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Substack
+        </a>
+
+        <a href="lore.html" class="btn btn-primary">
+          White Paper
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER / MARQUEE -->
+    <footer class="site-footer">
+      <div class="marquee">
+        <div class="marquee-track" id="bottomTicker">
+          <span>Loading wallet data...</span>
+          <span>Loading wallet data...</span>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <p>© <span id="year"></span> Lube · lubeonchain</p>
+        <p class="footer-tagline">No promises. No refunds. Only vibes.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
